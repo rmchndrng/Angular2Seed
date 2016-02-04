@@ -3,6 +3,9 @@ import {HeroListComponent} from './hero-list.component';
 import {HeroDetailComponent} from './hero-detail.component';
 import {IHero} from '../models/IHero';
 
+import {Logger} from '../services/logger'
+
+
 @Component({
     selector: 'my-app',
     templateUrl: 'app/templates/app.html',
@@ -10,9 +13,12 @@ import {IHero} from '../models/IHero';
 })
 
 export class AppComponent {
+    constructor(private _Logger:Logger){}
+    
     public title = 'Tour of Heroes';
     public selectedHero :IHero;
     heroSelected(hero:IHero){
         this.selectedHero = hero;
+        this._Logger.log(this.selectedHero.name + ' selected.');
     }
 }
